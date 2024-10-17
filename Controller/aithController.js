@@ -13,7 +13,7 @@ export const register = async(req,res)=>{
 
         let user=null ;
         if(role==='patient'){user=await User.findOne({email})}
-        else if(role==='doctor'){user=await User.findOne({email})}
+        else if(role==='Doctor'){user=await User.findOne({email})}
 
         if(user){
             return res.status(400).json({message:'user already exists'})

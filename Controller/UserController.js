@@ -61,7 +61,7 @@ export const getAllUsers=async (req,res)=>{
 export const getUserProfile=async(req,res)=>{
     // console.log("..............................................")
     const userId = req.userId
-    // console.log(userId)
+   
     
     try{
         const user=await User.findById(userId)
