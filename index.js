@@ -11,9 +11,13 @@ import DoctorRoute from './Routes/DoctorRoute.js'
 
 
 
+
+
 dotenv.config()
 const app=express()
 const port =process.env.PORT || 8000
+
+
 
 const corsOption ={
     orgin:true
@@ -44,7 +48,8 @@ const connecteddb=async()=>{
 }
 
 
+
 app.listen(port,()=>{
     connecteddb();
-    console.log('server is running'+ port)
+    console.log('server is running at '+ port)
 })

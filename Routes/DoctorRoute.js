@@ -4,7 +4,7 @@ import { authenticate , restrict} from "../auth/verifyToken.js";
 import ReviewRoute from './ReviewRoute.js'
 
 const router = express.Router()
-router.use('/:doctorId/reviews', ReviewRoute)
+router.use('/:id/reviews', ReviewRoute)
 router.get('/:id',authenticate,restrict(["Doctor"]),findSingleDoctor)
 router.get('/',authenticate,restrict(["Doctor"]),getAllDoctors)
 router.delete('/:id',authenticate,restrict(["Doctor"]),deleteDoctor)

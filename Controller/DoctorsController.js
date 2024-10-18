@@ -36,7 +36,7 @@ export const deleteDoctor = async (req, res) => {
 export const findSingleDoctor = async (req, res) => {
   const id = req.params.id;
   try {
-    console.log(id);
+    console.log("Here is our eeror",id);
     const DoctorSingle = await Doctor.findById({ _id: id })
       .populate("reviews")
       .select("-password")

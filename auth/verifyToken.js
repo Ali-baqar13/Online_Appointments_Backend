@@ -12,13 +12,14 @@ export const authenticate = async (req, res, next) => {
   if (!authToken || !authToken.startsWith("Bearer ")) {
     return res
       .status(401)
-      .json({ sucess: false, message: "no Tken, authentication denied" });
+      .json({ sucess: false, message: "No Token Found So, Authentication denied" });
   }
   try {
     // console.log(authToken)
 
     const token = authToken.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    console.log(process.env.JWT_SECRET_KEY)
     req.userId = decoded.id;
     req.role = decoded.role;
 
@@ -27,6 +28,7 @@ export const authenticate = async (req, res, next) => {
     if (err.name === "TokenExpiredError") {
       return response.status(401).json({ message: "token Expired" });
     }
+    console.log(err)
     return res.status(401).json({ sucess: false, message: "invalid token" });
   }
 };
