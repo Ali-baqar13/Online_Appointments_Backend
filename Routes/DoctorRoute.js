@@ -5,8 +5,8 @@ import ReviewRoute from './ReviewRoute.js'
 
 const router = express.Router()
 router.use('/:id/reviews', ReviewRoute)
-router.get('/:id',authenticate,restrict(["Doctor"]),findSingleDoctor)
-router.get('/',authenticate,restrict(["Doctor"]),getAllDoctors)
+router.get('/:id',authenticate,findSingleDoctor)
+router.get('/',authenticate,getAllDoctors)
 router.delete('/:id',authenticate,restrict(["Doctor"]),deleteDoctor)
 router.put('/:id',authenticate,restrict(["Doctor"]),updateDoctor)
 router.get('/profile/me',authenticate,restrict(["Doctor"]),getDoctorProfile)
