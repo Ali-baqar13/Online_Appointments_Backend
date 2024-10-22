@@ -23,6 +23,7 @@ export const updateDoctor = async (req, res) => {
 
 export const deleteDoctor = async (req, res) => {
   const id = req.params.id;
+  
   try {
     await Doctor.findByIdAndDelete(id);
     res.status(200).json({ sucess: true, message: "sucessfully deleted" });
@@ -35,14 +36,17 @@ export const deleteDoctor = async (req, res) => {
 
 export const findSingleDoctor = async (req, res) => {
   const id = req.params.id;
+  
   try {
     console.log("Here is our eeror",id);
+    
     const DoctorSingle = await Doctor.findById({ _id: id })
+    
       .populate("reviews")
       .select("-password")
       .exec();
-    const reviews = await Review.find();
-    console.log(reviews);
+    
+    // console.log(reviews);
     // console.log("single doc",DoctorSingle)
     res.status(200).json({
       sucess: true,

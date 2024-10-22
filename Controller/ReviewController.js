@@ -4,11 +4,13 @@ import Doctor from '../models/DoctorSchema.js'
 
 
 export const getAllReviews=async(req,res)=>{
+    
 
     try{
 
         const review=await Review.find({})
-        res.status(200).json({sucess:true,message:"Review Found"})
+        res.status(200).json({sucess:true,message:"Review Found",data:review})
+        console.log(review)
 
     }catch(err){
 
@@ -46,14 +48,13 @@ export const createReview=async(req,res)=> {
             req.params.doctorId,
             {
                 $push: { reviews: savedReview._id }, // Push the review ID to reviews array
-                // doctorId: doctor._id                 // Optionally update doctorId field
-              },
+            }
             //   { new: true }
             // req.params.doctorId,{
             //     $push:{reviews: savedReview._id,doctorId:doctor._id}
             // }
         )
-        res.status(200).json({sucess:true,message:"Review Submit",reviewText:savedReview})
+        res.status(200).json({sucess:true,message:"Review Submit",data:savedReview})
 
     }catch(err){
         console.log(err)
