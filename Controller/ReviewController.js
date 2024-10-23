@@ -38,7 +38,7 @@ export const createReview=async(req,res)=> {
     const newReview = new Review({
         ...req.body,          // Spread the request body to include the review data
         doctor: doctor ,
-        
+        user:req.userId,
       
         
         
